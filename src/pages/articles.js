@@ -15,7 +15,7 @@ export default function Articles({ articles }) {
 }
 
 export const getStaticProps = async () => {
-  const articleRes = await fetch(`http://localhost:1337/api/articles?populate=*`);
+  const articleRes = await fetch(`${process.env.CMS_URL}/api/articles?populate=*`);
   const articleJson = await articleRes.json();
   const articles = articleJson.data;
 

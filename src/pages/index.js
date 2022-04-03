@@ -29,23 +29,23 @@ export default function Home({ backgroundImage, fixtures, results, articles, spo
 }
 
 export const getStaticProps = async () => {
-  const photoRes = await fetch(`http://localhost:1337/api/home-background?populate=*`);
+  const photoRes = await fetch(`${process.env.CMS_URL}/api/home-background?populate=*`);
   const photoResJson = await photoRes.json();
   const backgroundImage = photoResJson.data.attributes.img.data.attributes.url;
 
-  const fixtureRes = await fetch(`http://localhost:1337/api/fixtures?populate=*`);
+  const fixtureRes = await fetch(`${process.env.CMS_URL}/api/fixtures?populate=*`);
   const fixtureJson = await fixtureRes.json();
   const fixtures = fixtureJson.data;
 
-  const resultRes = await fetch(`http://localhost:1337/api/results?populate=*`);
+  const resultRes = await fetch(`${process.env.CMS_URL}/api/results?populate=*`);
   const resultJson = await resultRes.json();
   const results = resultJson.data;
 
-  const artcleRes = await fetch(`http://localhost:1337/api/articles?populate=*`);
+  const artcleRes = await fetch(`${process.env.CMS_URL}/api/articles?populate=*`);
   const articleJson = await artcleRes.json();
   const articles = articleJson.data;
 
-  const sponsorRes = await fetch(`http://localhost:1337/api/sponsors?populate=*`);
+  const sponsorRes = await fetch(`${process.env.CMS_URL}/api/sponsors?populate=*`);
   const sponsorJson = await sponsorRes.json();
   const sponsors = sponsorJson.data;
 

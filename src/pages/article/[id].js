@@ -21,7 +21,7 @@ export default function Article({ articleData }) {
 }
 
 export const getStaticProps = async (context) => {
-  const data = await fetch(`http://localhost:1337/api/articles?populate=*&[filters][id][$eq]=${context.params.id}`);
+  const data = await fetch(`${process.env.CMS_URL}/api/articles?populate=*&[filters][id][$eq]=${context.params.id}`);
   const articleData = await data.json();
 
   return {
@@ -32,7 +32,7 @@ export const getStaticProps = async (context) => {
 
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const res = await fetch(`http://localhost:1337/api/articles`);
+  const res = await fetch(`${process.env.CMS_URL}/api/articles`);
   const articles = await res.json();
 
   // Get the paths we want to pre-render based on posts

@@ -21,7 +21,7 @@ export default function Photo({ photo, date, credits }) {
 
 export async function getStaticProps({ params }) {
   const photoid = params.id;
-  const results = await fetch(`http://localhost:1337/api/photos?populate=*&[filters][id][$eq]=${photoid}`);
+  const results = await fetch(`${process.env.CMS_URL}/api/photos?populate=*&[filters][id][$eq]=${photoid}`);
   const previews = await results.json();
 
   const photo = await previews.data[0].attributes.img.data.attributes.url;
@@ -33,7 +33,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const results = await fetch('http://localhost:1337/api/photos?populate=*');
+  const results = await fetch(`${process.env.CMS_URL}/api/photos?populate=*`);
   const previews = await results.json();
 
   return {

@@ -15,10 +15,10 @@ export default function Contact({ backgroundImage, data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`http://localhost:1337/api/contact`);
+  const res = await fetch(`${process.env.CMS_URL}/api/contact`);
   const data = await res.json();
 
-  const photoRes = await fetch(`http://localhost:1337/api/contact-background?populate=*`);
+  const photoRes = await fetch(`${process.env.CMS_URL}/api/contact-background?populate=*`);
   const photoResJson = await photoRes.json();
   const backgroundImage = photoResJson.data.attributes.img.data.attributes.url;
 

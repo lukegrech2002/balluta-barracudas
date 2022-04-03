@@ -17,7 +17,7 @@ export default function Results({ results }) {
 }
 
 export const getStaticProps = async () => {
-  const resultRes = await fetch(`http://localhost:1337/api/results?populate=*`);
+  const resultRes = await fetch(`${process.env.CMS_URL}/api/results?populate=*`);
   const resultJson = await resultRes.json();
   const results = resultJson.data;
 

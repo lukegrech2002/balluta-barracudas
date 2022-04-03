@@ -18,7 +18,7 @@ export default function TermsAndConditions({ termsAndConditions }) {
 }
 
 export const getStaticProps = async () => {
-  const termsAndConditionsRes = await fetch(`http://localhost:1337/api/terms-and-condition`);
+  const termsAndConditionsRes = await fetch(`${process.env.CMS_URL}/api/terms-and-condition`);
   const termsAndConditionsJson = await termsAndConditionsRes.json();
   const termsAndConditions = termsAndConditionsJson.data;
 

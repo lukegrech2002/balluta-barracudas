@@ -17,7 +17,7 @@ export default function Fixtures({ fixtures }) {
 }
 
 export const getStaticProps = async () => {
-  const fixtureRes = await fetch(`http://localhost:1337/api/fixtures?populate=*`);
+  const fixtureRes = await fetch(`${process.env.CMS_URL}/api/fixtures?populate=*`);
   const fixtureJson = await fixtureRes.json();
   const fixtures = fixtureJson.data;
 

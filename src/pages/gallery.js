@@ -34,7 +34,7 @@ export default function Gallery({ photos }) {
 }
 
 export const getStaticProps = async () => {
-  const photoRes = await fetch(`http://localhost:1337/api/photos?populate=*`);
+  const photoRes = await fetch(`${process.env.CMS_URL}/api/photos?populate=*`);
   const photoResJson = await photoRes.json();
   const photos = photoResJson.data;
 

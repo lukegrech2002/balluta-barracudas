@@ -18,7 +18,7 @@ export default function PrivacyPolicy({ privacyPolicy }) {
 }
 
 export const getStaticProps = async () => {
-  const privacyPolicyRes = await fetch(`http://localhost:1337/api/privacy-policy`);
+  const privacyPolicyRes = await fetch(`${process.env.CMS_URL}/api/privacy-policy`);
   const privacyPolicyJson = await privacyPolicyRes.json();
   const privacyPolicy = privacyPolicyJson.data;
 

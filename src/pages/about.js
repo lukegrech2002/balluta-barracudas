@@ -17,10 +17,10 @@ export default function About({ backgroundImage, data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`http://localhost:1337/api/about`);
+  const res = await fetch(`${process.env.CMS_URL}/api/about`);
   const data = await res.json();
 
-  const photoRes = await fetch(`http://localhost:1337/api/about-background?populate=*`);
+  const photoRes = await fetch(`${process.env.CMS_URL}/api/about-background?populate=*`);
   const photoResJson = await photoRes.json();
   const backgroundImage = photoResJson.data.attributes.img.data.attributes.url;
 
